@@ -1,3 +1,5 @@
+from src.screens.tela_login import logar
+
 if __name__ == "__main__":
   running = True
   while(running):
@@ -13,7 +15,7 @@ if __name__ == "__main__":
       case 1:
         print("Substituto temporário para tela de cadastro de usuário")
       case 2:
-        print("Substituto temporário para tela de login de usuário")
+        logar()
       case 3:
         print("Obrigado e até a próxima")
         running = False
