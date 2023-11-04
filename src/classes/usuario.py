@@ -2,6 +2,7 @@ import typing
 import bcrypt
 import numero_conta as nc
 import transacao as tr
+
 class Usuario:
   def __init__(self,cpf:int,numero_conta:nc.Numero_conta,email:str,senha:str,nome:str,telefone:int,saldo:float,extrato:typing.List[tr.Transacao]) -> None:
     self.cpf = cpf
