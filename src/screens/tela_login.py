@@ -1,26 +1,22 @@
-import validate_docbr
+import typing
 from src.classes.usuario import Usuario
 from src.classes.numero_conta import Numero_conta
 
-def logar():
+def logar(usuarios:typing.List[Usuario]):
 
-  cpf_validator = validate_docbr.CPF()
-  cpf = input("Digite seu cpf no formato NNN.NNN.NNN-NN: ")
-  checar_cpf = cpf_validator.validate(cpf)
-
-  if(not checar_cpf):
-    print("CPF inválido, por favor tente novamente")
-    return
+  cpf = input("Digite seu cpf: ")
   
-  senha = input("Digite sua senha: ")
-
-  if(len(senha)<8):
-    print("Senha incorreta")
-    return
+  for usuario in usuarios:
+    if usuario.cpf == cpf:
+      senha = input("Digite sua senha: ")
+      if usuario.login(senha):
+        mostrar_tela_usuario(usuario)
+      else:
+        print("Senha incorreta")
+      return
   
-  if(senha == "temporario"):
-    usuario = Usuario(cpf,Numero_conta(127,000000000000000),"teste@mail.com",senha,"Fulano de Tal",82000000000,1000,[])
-    mostrar_tela_usuario(usuario)
+  print("Usuario não cadastrado")
+  return
 
 def mostrar_tela_usuario(usuario:Usuario):
 
@@ -53,7 +49,7 @@ def mostrar_tela_usuario(usuario:Usuario):
       case 4:
         codigo = int(input("Digite o codigo do boleto:\n"))
         valor = float(input("Qual valor do boleto?\n"))
-        resultado = usuario.pagamento(valor,codigo)
+        resultado = usuario.pagamento(codigo,valor)
         print("Operação efetuada com sucesso") if resultado else print("Não foi possivel realizar a transação")
 
       case 5:
