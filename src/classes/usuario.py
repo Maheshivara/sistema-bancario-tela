@@ -80,6 +80,6 @@ class Usuario:
       return False
     
     self.saldo -= valor
-    self.extrato.append(tr.Transacao("Transferência",datetime.datetime.now(),valor,self.nome))
+    self.extrato.append(tr.Transacao("Pagamento",datetime.datetime.now(),valor,self.nome))
 
     return True
