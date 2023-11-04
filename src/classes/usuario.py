@@ -65,7 +65,7 @@ class Usuario:
 
     return True
   
-  def pagamento(self,valor:float)->bool:
+  def pagamento(self,codigo:int,valor:float)->bool:
     """
     Remove o valor da conta e adiciona a transação ao extrato
 
@@ -80,6 +80,6 @@ class Usuario:
       return False
     
     self.saldo -= valor
-    self.extrato.append(Transacao("Pagamento",datetime.datetime.now(),valor,self.nome))
+    self.extrato.append(Transacao("Pagamento",datetime.datetime.now(),valor,codigo))
 
     return True
