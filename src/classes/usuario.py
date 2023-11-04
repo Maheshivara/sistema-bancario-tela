@@ -5,11 +5,11 @@ from src.classes.numero_conta import Numero_conta
 from src.classes.transacao import Transacao
 
 class Usuario:
-  def __init__(self,cpf:str,numero_conta:Numero_conta,email:str,senha:str,nome:str,telefone:int,saldo:float,extrato:typing.List[Transacao]) -> None:
+  def __init__(self,cpf:str,numero_conta:Numero_conta,email:str,senha_hash:bytes,nome:str,telefone:int,saldo:float,extrato:typing.List[Transacao]) -> None:
     self.cpf = cpf
     self.numero_conta = numero_conta
     self.email = email
-    self.senha = senha
+    self.senha_hash = senha_hash
     self.nome = nome
     self.telefone = telefone
     self.saldo = saldo
@@ -25,7 +25,7 @@ class Usuario:
     Returns:
         bool: True para senha correta, False para senha incorreta
     """
-    return bcrypt.checkpw(bytes(senha),self.senha)
+    return bcrypt.checkpw(senha.encode("utf-8"),self.senha_hash)
   
   def sacar(self,valor:float)->bool:
     """
