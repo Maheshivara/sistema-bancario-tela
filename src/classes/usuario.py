@@ -45,4 +45,23 @@ class Usuario:
     self.extrato.append(tr.Transacao("Saque",datetime.datetime.now(),valor,self.nome))
 
     return True
+  
+  def depositar(self,valor:float)->bool:
+    """
+    Adiciona ao saldo o valor sacado e adiciona a transação ao extrato
+
+    Args:
+        valor (float): Valor a ser adicionado
+
+    Returns:
+        bool: True caso a transação seja efetuada, False caso não seja efetuada
+    """
+
+    if (valor<0):
+      return False
+    
+    self.saldo += valor
+    self.extrato.append(tr.Transacao("Deposito",datetime.datetime.now(),valor,self.nome))
+
+    return True
     
