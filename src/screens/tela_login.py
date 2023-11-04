@@ -1,6 +1,6 @@
 import validate_docbr
-from ..classes import usuario as us
-from ..classes import numero_conta as nc
+from src.classes.usuario import Usuario
+from src.classes.numero_conta import Numero_conta
 
 def logar():
 
@@ -14,15 +14,15 @@ def logar():
   
   senha = input("Digite sua senha: ")
 
-  if(len(senha<8)):
+  if(len(senha)<8):
     print("Senha incorreta")
     return
   
   if(senha == "temporario"):
-    usuario = us.Usuario(cpf,nc.Numero_conta(127,000000000000000),"teste@mail.com",senha,"Fulano de Tal",82000000000,1000,[])
+    usuario = Usuario(cpf,Numero_conta(127,000000000000000),"teste@mail.com",senha,"Fulano de Tal",82000000000,1000,[])
     mostrar_tela_usuario(usuario)
 
-def mostrar_tela_usuario(usuario:us.Usuario):
+def mostrar_tela_usuario(usuario:Usuario):
   logado = True
   while(logado):
     print(f'Olá {usuario.nome}')
@@ -63,7 +63,3 @@ def mostrar_tela_usuario(usuario:us.Usuario):
 
       case _:
         print("Operação inválida")
-        
-
-
-  
