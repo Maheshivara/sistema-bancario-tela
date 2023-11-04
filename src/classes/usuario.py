@@ -1,11 +1,11 @@
 import typing
 import bcrypt
 import datetime
-import numero_conta as nc
-import transacao as tr
+from src.classes.numero_conta import Numero_conta
+from src.classes.transacao import Transacao
 
 class Usuario:
-  def __init__(self,cpf:str,numero_conta:nc.Numero_conta,email:str,senha:str,nome:str,telefone:int,saldo:float,extrato:typing.List[tr.Transacao]) -> None:
+  def __init__(self,cpf:str,numero_conta:Numero_conta,email:str,senha:str,nome:str,telefone:int,saldo:float,extrato:typing.List[Transacao]) -> None:
     self.cpf = cpf
     self.numero_conta = numero_conta
     self.email = email
@@ -42,7 +42,7 @@ class Usuario:
       return False
     
     self.saldo -= valor
-    self.extrato.append(tr.Transacao("Saque",datetime.datetime.now(),valor,self.nome))
+    self.extrato.append(Transacao("Saque",datetime.datetime.now(),valor,self.nome))
 
     return True
   
@@ -61,11 +61,11 @@ class Usuario:
       return False
     
     self.saldo += valor
-    self.extrato.append(tr.Transacao("Deposito",datetime.datetime.now(),valor,self.nome))
+    self.extrato.append(Transacao("Deposito",datetime.datetime.now(),valor,self.nome))
 
     return True
   
-  def pagamento(self,valor:float)->bool:
+  def pagamento(self,codigo:int,valor:float)->bool:
     """
     Remove o valor da conta e adiciona a transação ao extrato
 
@@ -80,6 +80,6 @@ class Usuario:
       return False
     
     self.saldo -= valor
-    self.extrato.append(tr.Transacao("Pagamento",datetime.datetime.now(),valor,self.nome))
+    self.extrato.append(Transacao("Pagamento",datetime.datetime.now(),valor,codigo))
 
     return True

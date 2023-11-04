@@ -1,2 +1,7 @@
 #Pasta ambiente python
-/.env 
+/.env
+
+#pycaches
+/src/__pycache__
+/src/classes/__pycache__
+/src/screens/__pycache__
