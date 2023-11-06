@@ -63,7 +63,13 @@ source ./.env/bin/activate
 pip install -r requirements.txt
 ```
 
-5. Execute o módulo main:
+5. Prepare o pre-commit para o projeto:
+
+```bash
+pre-commit install
+```
+
+6. Execute o módulo main:
 
 ```bash
 python -m src.main
