@@ -19,10 +19,10 @@ def criar_usuario(usuarios:typing.List[Usuario])->typing.Union[Usuario, None]:
 
   cpf_validator = validate_docbr.CPF()
   while(True):
-    cpf = input("Digite o CPF do novo usuário:\n")
-    if cpf_validator.validate(cpf):
-      break
-    print("CPF inválido, tente novamente")
+      cpf = input("Digite o CPF do novo usuário (apenas números):\n")
+      if cpf.isdecimal() and cpf_validator.validate(cpf) :
+        break
+      print("CPF inválido, tente novamente")
 
   for usuario in usuarios:
     if cpf == usuario.cpf:
