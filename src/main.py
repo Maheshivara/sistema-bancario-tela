@@ -18,6 +18,9 @@ if __name__ == "__main__":
         novo_usuario = criar_usuario(usuarios)
         if (not novo_usuario is None):
           usuarios.append(novo_usuario)
+          print("Sua nova conta é:")
+          novo_usuario.numero_conta.print()
+          
       case 2:
         logar(usuarios)
       case 3:

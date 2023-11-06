@@ -1,5 +1,4 @@
 import bcrypt
-import random
 import typing
 import validate_docbr
 from src.classes.usuario import Usuario
@@ -12,17 +11,13 @@ def criar_usuario(usuarios:typing.List[Usuario])->typing.Union[Usuario, None]:
   Returns:
       Usuario: O objeto usuário com as informações passadas
   """
-  #Evitando softlock na geração de numero de contas
-  if(len(usuarios)== ((10**8)*9)-1):
-    print("Numero maximo de usuarios cadastrados")
-    return None
 
   cpf_validator = validate_docbr.CPF()
   while(True):
-    cpf = input("Digite o CPF do novo usuário:\n")
-    if cpf_validator.validate(cpf):
-      break
-    print("CPF inválido, tente novamente")
+      cpf = input("Digite o CPF do novo usuário (apenas números):\n")
+      if cpf.isdecimal() and cpf_validator.validate(cpf) :
+        break
+      print("CPF inválido, tente novamente")
 
   for usuario in usuarios:
     if cpf == usuario.cpf:
@@ -43,18 +38,7 @@ def criar_usuario(usuarios:typing.List[Usuario])->typing.Union[Usuario, None]:
   telefone = int(input("Insira o telefone do novo usuário:\n"))
 
   agencia = 123
-  conta = random.randint((10**8),(10**9)-1)
-  
-
-  while(True):
-    equivalente = False
-    for usuario in usuarios:
-      if usuario.numero_conta.numero == conta:
-        conta = random.randint((10**8),(10**9)-1)
-        equivalente = True
-        break
-    if equivalente == False:
-      break
+  conta = (10**35) + len(usuarios)+1
         
   numero_conta = Numero_conta(agencia,conta)
   novo_usuario = Usuario(cpf,numero_conta,email,senha_hash,nome,telefone,0,[])

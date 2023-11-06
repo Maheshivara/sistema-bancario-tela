@@ -4,8 +4,11 @@ from src.classes.numero_conta import Numero_conta
 
 def logar(usuarios:typing.List[Usuario]):
 
-  cpf = input("Digite seu cpf: ")
-  
+  cpf = input("Digite seu cpf (somente números): ")
+  if not cpf.isdecimal():
+    print("Formato inválido")
+    return
+
   for usuario in usuarios:
     if usuario.cpf == cpf:
       senha = input("Digite sua senha: ")
