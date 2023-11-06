@@ -1,11 +1,11 @@
 class Numero_conta:
-  def __init__(self,agencia:int,numero:float) -> None:
-    self.agencia = agencia
-    self.numero = numero
+    def __init__(self, agencia: int, numero: float) -> None:
+        self.agencia = agencia
+        self.numero = numero
 
-  def print(self)->None:
-    """
-    Exibe no terminal a agencia e numero da conta
-    """
+    def print(self) -> None:
+        """
+        Exibe no terminal a agencia e numero da conta
+        """
 
-    print(f'Agencia: {self.agencia}\nConta: {self.numero}')
+        print(f"Agencia: {self.agencia}\nConta: {self.numero}")
