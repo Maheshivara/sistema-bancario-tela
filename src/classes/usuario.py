@@ -134,3 +134,18 @@ class Usuario:
 
         self.senha_hash = nova_senha_hash
         return
+
+    def atualizar_telefone(self):
+        """
+        Pede, via terminal, um novo telefone e atualiza no usuário
+        """
+
+        while True:
+            telefone = input('Digite seu novo telefone:\n')
+            if telefone.isdigit():
+                telefone = int(telefone)
+                break
+            print('Telefone inválido, use apenas números')
+
+        self.telefone = telefone
+        return
