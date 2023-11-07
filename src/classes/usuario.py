@@ -37,7 +37,8 @@ class Usuario:
         Returns:
             bool: True para senha correta, False para senha incorreta
         """
-        return bcrypt.checkpw(senha.encode('utf-8'), self.senha_hash)
+        check = bcrypt.checkpw(senha.encode('utf-8'), self.senha_hash)
+        return check
 
     def sacar(self, valor: float) -> bool:
         """
@@ -105,9 +106,6 @@ class Usuario:
     def atualizar_email(self) -> None:
         """
         Pede, via terminal, um novo email e atualiza no usuário
-
-        Returns:
-            bool: True, se a operação foi bem sucedida, False caso seja mal-sucedida
         """
 
         while True:
@@ -118,4 +116,21 @@ class Usuario:
             print('Email inválido')
 
         self.email = novo_email
+        return
+
+    def atualizar_senha(self) -> None:
+        """
+        Pede, via terminal, uma nova senha e atualiza no usuário
+        """
+
+        while True:
+            nova_senha = input('Digite a senha para o novo usuário:\n')
+            if len(senha) >= 8:
+                break
+            print('A senha deve possuir ao menos 8 caracteres')
+
+        salt = bcrypt.gensalt()
+        nova_senha_hash = bcrypt.hashpw(nova_senha.encode('utf-8'), salt)
+
+        self.senha_hash = nova_senha_hash
         return
