@@ -28,7 +28,7 @@ def mostrar_tela_usuario(usuario: Usuario):
     logado = True
 
     while logado:
-        print(f"Olá {usuario.nome}")
+        print(f'Olá {usuario.nome}')
         print(
             'Operações:\n 1- Saque\n 2- Deposito\n 3- Transferencia\n 4- Pagamento\n 5- Ver Saldo\n 6- Ver Extrato\n 7- Sair'
         )
@@ -68,7 +68,7 @@ def mostrar_tela_usuario(usuario: Usuario):
                 )
 
             case 5:
-                print(f"Seu saldo é de {usuario.saldo:.2f} reais")
+                print(f'Seu saldo é de {usuario.saldo:.2f} reais')
 
             case 6:
                 for transacao in usuario.extrato:

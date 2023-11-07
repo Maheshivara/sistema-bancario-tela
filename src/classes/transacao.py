@@ -15,5 +15,5 @@ class Transacao:
         Exibe no terminal de forma legivel as informações da transação
         """
         print(
-            f"Data: {self.data.isoformat()}, Tipo: {self.tipo}, Valor: {self.valor:.2f}, Destino: {self.destino}"
+            f'Data: {self.data.isoformat()}, Tipo: {self.tipo}, Valor: {self.valor:.2f}, Destino: {self.destino}'
         )

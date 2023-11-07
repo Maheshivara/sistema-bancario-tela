@@ -8,4 +8,4 @@ class Numero_conta:
         Exibe no terminal a agencia e numero da conta
         """
 
-        print(f"Agencia: {self.agencia}\nConta: {self.numero}")
+        print(f'Agencia: {self.agencia}\nConta: {self.numero}')
