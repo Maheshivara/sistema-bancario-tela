@@ -1,6 +1,7 @@
 import typing
 import bcrypt
 import datetime
+import re
 from src.classes.numero_conta import Numero_conta
 from src.classes.transacao import Transacao
 
@@ -100,3 +101,21 @@ class Usuario:
         )
 
         return True
+
+    def atualizar_email(self) -> None:
+        """
+        Pede, via terminal, um novo email e atualiza no usuário
+
+        Returns:
+            bool: True, se a operação foi bem sucedida, False caso seja mal-sucedida
+        """
+
+        while True:
+            novo_email = input('Digite o seu novo email:\n')
+            # Traduzindo o regex: Ao menos um caractere diferente de '@' + um '@' + Ao menos um caractere diferente de '@' + um '.' + Algum(s) caractere
+            if re.match(r'[^@]+@[^@]+\.[^@]+', email):
+                break
+            print('Email inválido')
+
+        self.email = novo_email
+        return
