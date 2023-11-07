@@ -1,5 +1,6 @@
 import bcrypt
 import typing
+import re
 import validate_docbr
 from src.classes.usuario import Usuario
 from src.classes.numero_conta import Numero_conta
@@ -34,7 +35,13 @@ def criar_usuario(usuarios: typing.List[Usuario]) -> typing.Union[Usuario, None]
     salt = bcrypt.gensalt()
     senha_hash = bcrypt.hashpw(senha.encode('utf-8'), salt)
 
-    email = input('Digite o email do novo usuário:\n')
+    while True:
+        email = input('Digite o email do novo usuário:\n')
+        # Traduzindo o regex: Ao menos um caractere diferente de '@' + um '@' + Ao menos um caractere diferente de '@' + um '.' + Algum(s) caractere
+        if re.match(r'[^@]+@[^@]+\.[^@]+', email):
+            break
+        print('Email inválido')
+
     nome = input('Digite o nome do novo usuário:\n')
     telefone = int(input('Insira o telefone do novo usuário:\n'))
 
