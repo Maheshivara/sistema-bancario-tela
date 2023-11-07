@@ -1,6 +1,7 @@
 import typing
 import bcrypt
 import datetime
+import re
 from src.classes.numero_conta import Numero_conta
 from src.classes.transacao import Transacao
 
@@ -36,7 +37,8 @@ class Usuario:
         Returns:
             bool: True para senha correta, False para senha incorreta
         """
-        return bcrypt.checkpw(senha.encode('utf-8'), self.senha_hash)
+        check = bcrypt.checkpw(senha.encode('utf-8'), self.senha_hash)
+        return check
 
     def sacar(self, valor: float) -> bool:
         """
@@ -100,3 +102,50 @@ class Usuario:
         )
 
         return True
+
+    def atualizar_email(self) -> None:
+        """
+        Pede, via terminal, um novo email e atualiza no usuário
+        """
+
+        while True:
+            novo_email = input('Digite o seu novo email:\n')
+            # Traduzindo o regex: Ao menos um caractere diferente de '@' + um '@' + Ao menos um caractere diferente de '@' + um '.' + Algum(s) caractere
+            if re.match(r'[^@]+@[^@]+\.[^@]+', email):
+                break
+            print('Email inválido')
+
+        self.email = novo_email
+        return
+
+    def atualizar_senha(self) -> None:
+        """
+        Pede, via terminal, uma nova senha e atualiza no usuário
+        """
+
+        while True:
+            nova_senha = input('Digite a senha para o novo usuário:\n')
+            if len(senha) >= 8:
+                break
+            print('A senha deve possuir ao menos 8 caracteres')
+
+        salt = bcrypt.gensalt()
+        nova_senha_hash = bcrypt.hashpw(nova_senha.encode('utf-8'), salt)
+
+        self.senha_hash = nova_senha_hash
+        return
+
+    def atualizar_telefone(self):
+        """
+        Pede, via terminal, um novo telefone e atualiza no usuário
+        """
+
+        while True:
+            telefone = input('Digite seu novo telefone:\n')
+            if telefone.isdigit():
+                telefone = int(telefone)
+                break
+            print('Telefone inválido, use apenas números')
+
+        self.telefone = telefone
+        return
