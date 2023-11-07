@@ -6,16 +6,12 @@ if __name__ == '__main__':
     usuarios = []
     while running:
         print('Olá, você pode:\n 1- Cadastrar Usuário\n 2- Realizar Login\n 3- Sair')
-
-        try:
-            opt = int(input('Digite a opção desejada: '))
-        except:
-            print(
-                'Opa, a opção escolhida não parece válida, por favor tente novamente, caso acredite que isso seja um erro contate o administrador'
-            )
+        opc = input('Digite a opção desejada: ')
+        if not opc.isnumeric():
+            print('Opção inválida')
             continue
 
-        match opt:
+        match opc:
             case 1:
                 novo_usuario = criar_usuario(usuarios)
                 if not novo_usuario is None:

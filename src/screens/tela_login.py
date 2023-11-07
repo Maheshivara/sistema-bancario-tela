@@ -30,15 +30,12 @@ def mostrar_tela_usuario(usuario: Usuario):
     while logado:
         print(f'Olá {usuario.nome}')
         print(
-            'Operações:\n 1- Saque\n 2- Deposito\n 3- Transferencia\n 4- Pagamento\n 5- Ver Saldo\n 6- Ver Extrato\n 7- Sair'
+            'Operações:\n 1- Saque\n 2- Deposito\n 3- Transferência\n 4- Pagamento\n 5- Ver Saldo\n 6- Ver Extrato\n 7- Ver dados\n 8- Sair'
         )
 
-        try:
-            opc = int(input('Qual operação voce deseja realizar hoje?\n'))
-        except:
-            print(
-                'Opa, essa operação parece inválida, caso acredite que essa mensagem seja um erro contate o administrador'
-            )
+        opc = input('Qual operação voce deseja realizar hoje?\n')
+        if not opc.isnumeric():
+            print('Opção inválida')
             continue
 
         match opc:
