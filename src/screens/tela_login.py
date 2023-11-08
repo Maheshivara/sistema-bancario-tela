@@ -1,6 +1,6 @@
 import typing
 from src.classes.usuario import Usuario
-from src.classes.numero_conta import Numero_conta
+from src.screens.tela_dados_usuario import mostrar_tela_dados
 
 
 def logar(usuarios: typing.List[Usuario]):
@@ -43,25 +43,25 @@ def mostrar_tela_usuario(usuario: Usuario):
                 valor = float(input('Quanto você deseja sacar?\n'))
                 resultado = usuario.sacar(valor)
                 print('Operação efetuada com sucesso') if resultado else print(
-                    'Não foi possivel realizar a transação'
+                    'Não foi possível realizar a transação'
                 )
 
             case 2:
                 valor = float(input('Quanto você deseja depositar?\n'))
                 resultado = usuario.depositar(valor)
                 print('Operação efetuada com sucesso') if resultado else print(
-                    'Não foi possivel realizar a transação'
+                    'Não foi possível realizar a transação'
                 )
 
             case 3:
                 print('A implementar')
 
             case 4:
-                codigo = int(input('Digite o codigo do boleto:\n'))
+                codigo = int(input('Digite o código do boleto:\n'))
                 valor = float(input('Qual valor do boleto?\n'))
                 resultado = usuario.pagamento(codigo, valor)
                 print('Operação efetuada com sucesso') if resultado else print(
-                    'Não foi possivel realizar a transação'
+                    'Não foi possível realizar a transação'
                 )
 
             case 5:
@@ -72,6 +72,9 @@ def mostrar_tela_usuario(usuario: Usuario):
                     transacao.print()
 
             case 7:
+                mostrar_tela_dados(usuario)
+
+            case 8:
                 logado = False
 
             case _:
