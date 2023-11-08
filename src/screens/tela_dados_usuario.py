@@ -5,11 +5,12 @@ def mostrar_tela_dados(usuario: Usuario) -> None:
     print(
         'Você pode:\n 1 - Mudar email\n 2 - Mudar telefone\n 3 - Mudar senha\n 4- Ver seus dados\n Outro - Voltar'
     )
-    opt = input('O que você deseja fazer?\n')
-    if not opt.isnumeric():
+    opc = input('O que você deseja fazer?\n')
+    if not opc.isnumeric():
         print('Opção inválida')
         return
-    match opt:
+    opc = int(opc)
+    match opc:
         case 1:
             usuario.atualizar_email()
         case 2:
