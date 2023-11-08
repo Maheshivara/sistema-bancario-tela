@@ -46,7 +46,8 @@ def criar_usuario(usuarios: typing.List[Usuario]) -> typing.Union[Usuario, None]
     telefone = int(input('Insira o telefone do novo usuário:\n'))
 
     agencia = 123
-    conta = (10**35) + len(usuarios) + 1
+    # Gerando um número de ao menos 7 digitos
+    conta = (10**6) + len(usuarios) + 1
 
     numero_conta = Numero_conta(agencia, conta)
     novo_usuario = Usuario(cpf, numero_conta, email, senha_hash, nome, telefone, 0, [])
