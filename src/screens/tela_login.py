@@ -6,7 +6,7 @@ from src.screens.tela_dados_usuario import mostrar_tela_dados
 def logar(usuarios: typing.List[Usuario]):
 
     cpf = input('Digite seu cpf (somente números): ')
-    if not cpf.isdecimal():
+    if not cpf.isdecimal() or len(cpf) != 11:
         print('Formato inválido')
         return
 
@@ -41,14 +41,26 @@ def mostrar_tela_usuario(usuario: Usuario):
         opc = int(opc)
         match opc:
             case 1:
-                valor = float(input('Quanto você deseja sacar?\n'))
+                while True:
+                    try:
+                        valor = float(input('Quanto você deseja depositar?\n'))
+                    except ValueError:
+                        print('Erro de digitação, por favor digite novamente')
+                    else:
+                        break
                 resultado = usuario.sacar(valor)
                 print('Operação efetuada com sucesso') if resultado else print(
                     'Não foi possível realizar a transação'
                 )
 
             case 2:
-                valor = float(input('Quanto você deseja depositar?\n'))
+                while True:
+                    try:
+                        valor = float(input('Quanto você deseja depositar?\n'))
+                    except ValueError:
+                        print('Erro de digitação, por favor digite novamente')
+                    else:
+                        break
                 resultado = usuario.depositar(valor)
                 print('Operação efetuada com sucesso') if resultado else print(
                     'Não foi possível realizar a transação'
@@ -58,8 +70,23 @@ def mostrar_tela_usuario(usuario: Usuario):
                 print('A implementar')
 
             case 4:
-                codigo = int(input('Digite o código do boleto:\n'))
-                valor = float(input('Qual valor do boleto?\n'))
+                while True:
+                    try:
+                        codigo = int(input('Digite o código do boleto:\n'))
+                    except ValueError:
+                        print('Erro de digitação, por favor digite novamente')
+                    else:
+                        break
+                while True:
+                    try:
+                        valor = float(input('Qual valor do boleto?\n'))
+                    except ValueError:
+                        print('Erro de digitação, por favor digite novamente')
+                    else:
+                        if valor < 0:
+                            print('Valor negativo!')
+                        else:
+                            break
                 resultado = usuario.pagamento(codigo, valor)
                 print('Operação efetuada com sucesso') if resultado else print(
                     'Não foi possível realizar a transação'
