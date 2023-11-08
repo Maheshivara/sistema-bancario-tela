@@ -141,11 +141,11 @@ class Usuario:
         """
 
         while True:
-            novo_telefone = input('Digite seu novo telefone:\n')
-            if novo_telefone.isdigit():
+            novo_telefone = input('Digite seu novo telefone (com):\n')
+            if novo_telefone.isdecimal() and len(novo_telefone) == 11:
                 novo_telefone = int(novo_telefone)
                 break
-            print('Telefone inválido, use apenas números')
+            print('Telefone inválido')
 
         self.telefone = novo_telefone
         return
