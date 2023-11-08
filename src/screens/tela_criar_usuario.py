@@ -43,7 +43,13 @@ def criar_usuario(usuarios: typing.List[Usuario]) -> typing.Union[Usuario, None]
         print('Email inválido')
 
     nome = input('Digite o nome do novo usuário:\n')
-    telefone = int(input('Insira o telefone do novo usuário:\n'))
+
+    while True:
+        telefone = input('Insira o telefone do novo usuário:\n')
+        if telefone.isdecimal() and len(telefone) == 11:
+            telefone = int(telefone)
+            break
+        print("Numero de celular invalido!")
 
     agencia = 123
     # Gerando um número de ao menos 7 digitos
