@@ -38,6 +38,7 @@ def mostrar_tela_usuario(usuario: Usuario):
             print('Opção inválida')
             continue
 
+        opc = int(opc)
         match opc:
             case 1:
                 valor = float(input('Quanto você deseja sacar?\n'))

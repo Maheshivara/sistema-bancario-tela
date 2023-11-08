@@ -10,7 +10,7 @@ if __name__ == '__main__':
         if not opc.isnumeric():
             print('Opção inválida')
             continue
-
+        opc = int(opc)
         match opc:
             case 1:
                 novo_usuario = criar_usuario(usuarios)
