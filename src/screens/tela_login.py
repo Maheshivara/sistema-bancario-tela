@@ -1,5 +1,5 @@
 import typing
-from os import system
+import os
 from src.classes.usuario import Usuario
 from src.screens.tela_dados_usuario import mostrar_tela_dados
 
@@ -37,7 +37,7 @@ def mostrar_tela_usuario(usuario: Usuario):
         if not opc.isnumeric():
             print('Opção inválida')
             continue
-        system('cls')
+        os.system('cls' if os.name == 'nt' else 'echo -e \\\\033c')
         opc = int(opc)
         match opc:
             case 1:

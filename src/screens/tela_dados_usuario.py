@@ -1,9 +1,9 @@
-from os import system
+import os
 from src.classes.usuario import Usuario
 
 
 def mostrar_tela_dados(usuario: Usuario) -> None:
-    system('cls')
+    os.system('cls' if os.name == 'nt' else 'echo -e \\\\033c')
     print(
         'Você pode:\n 1 - Mudar email\n 2 - Mudar telefone\n 3 - Mudar senha\n 4 - Ver seus dados\n Outro - Voltar'
     )
