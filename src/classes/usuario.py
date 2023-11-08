@@ -111,7 +111,7 @@ class Usuario:
         while True:
             novo_email = input('Digite o seu novo email:\n')
             # Traduzindo o regex: Ao menos um caractere diferente de '@' + um '@' + Ao menos um caractere diferente de '@' + um '.' + Algum(s) caractere
-            if re.match(r'[^@]+@[^@]+\.[^@]+', email):
+            if re.match(r'[^@]+@[^@]+\.[^@]+', novo_email):
                 break
             print('Email inválido')
 
@@ -125,7 +125,7 @@ class Usuario:
 
         while True:
             nova_senha = input('Digite a senha para o novo usuário:\n')
-            if len(senha) >= 8:
+            if len(nova_senha) >= 8:
                 break
             print('A senha deve possuir ao menos 8 caracteres')
 
@@ -141,11 +141,11 @@ class Usuario:
         """
 
         while True:
-            telefone = input('Digite seu novo telefone:\n')
-            if telefone.isdigit():
-                telefone = int(telefone)
+            novo_telefone = input('Digite seu novo telefone:\n')
+            if novo_telefone.isdigit():
+                novo_telefone = int(novo_telefone)
                 break
             print('Telefone inválido, use apenas números')
 
-        self.telefone = telefone
+        self.telefone = novo_telefone
         return
