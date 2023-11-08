@@ -1,7 +1,9 @@
+from os import system
 from src.classes.usuario import Usuario
 
 
 def mostrar_tela_dados(usuario: Usuario) -> None:
+    system('cls')
     print(
         'Você pode:\n 1 - Mudar email\n 2 - Mudar telefone\n 3 - Mudar senha\n 4 - Ver seus dados\n Outro - Voltar'
     )

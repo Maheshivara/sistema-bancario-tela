@@ -1,4 +1,5 @@
 import typing
+from os import system
 from src.classes.usuario import Usuario
 from src.screens.tela_dados_usuario import mostrar_tela_dados
 
@@ -26,7 +27,6 @@ def logar(usuarios: typing.List[Usuario]):
 def mostrar_tela_usuario(usuario: Usuario):
 
     logado = True
-
     while logado:
         print(f'Olá {usuario.nome}')
         print(
@@ -37,7 +37,7 @@ def mostrar_tela_usuario(usuario: Usuario):
         if not opc.isnumeric():
             print('Opção inválida')
             continue
-
+        system('cls')
         opc = int(opc)
         match opc:
             case 1:
