@@ -22,9 +22,7 @@ def mostrar_tela_dados(usuario: Usuario) -> None:
             print(f'Nome: {usuario.nome}')
             print(f'Email: {usuario.email}')
             print(f'Telefone: {usuario.telefone}')
-            print(
-                f'Conta:\n Agencia: {usuario.numero_conta.agencia}\n Numero: {usuario.numero_conta.numero}\n'
-            )
+            usuario.numero_conta.print()
         case _:
             print('Voltando...')
     return
