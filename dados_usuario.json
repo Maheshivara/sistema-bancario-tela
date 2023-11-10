@@ -1,0 +1,28 @@
+[
+  {
+    "cpf": "11712715496",
+    "email": "wallace@gmail.com",
+    "extrato": [
+      {
+        "data": "2023-11-10 15:09:07.243505",
+        "destino": "wallace",
+        "tipo": "Deposito",
+        "valor": 1000.0
+      },
+      {
+        "data": "2023-11-10 15:09:11.134755",
+        "destino": "wallace",
+        "tipo": "Deposito",
+        "valor": 500.0
+      }
+    ],
+    "nome": "wallace",
+    "numero_conta": {
+      "agencia": 123,
+      "numero": 1000001
+    },
+    "saldo": 1500.0,
+    "senha_hash": "$2b$12$vd3sPtJU7smZKN9OucLbfe5akMh/Z1etzsaeWAuKbFR/S.HW/m2zi",
+    "telefone": 82999843324
+  }
+]

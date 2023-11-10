@@ -4,6 +4,29 @@ from src.classes.usuario import Usuario
 from src.screens.tela_dados_usuario import mostrar_tela_dados
 
 
+def salvar_usuarios(usuarios: typing.List[Usuario]) -> None:
+    """
+    Salvando os
+    """
+    with open(file='user_data.json', mode='w', encoding='utf8') as file:
+        # Converta os objetos Usuario para um formato serializável (dict) e escreva no arquivo
+        serialized_data = [
+            {
+                'cpf': user.cpf,
+                'email': user.email,
+                'senha_hash': user.senha_hash.decode(
+                    'utf-8'
+                ),  # Converta bytes para str
+                'nome': user.nome,
+                'telefone': user.telefone,
+                'saldo': user.saldo,
+            }
+            for user in usuarios
+        ]
+        print(serialized_data)
+        json.dump(serialized_data, file)
+
+
 def logar(usuarios: typing.List[Usuario]):
 
     cpf = input('Digite seu cpf (somente números): ')

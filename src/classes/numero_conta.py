@@ -9,3 +9,9 @@ class Numero_conta:
         """
 
         print(f'Agencia: {self.agencia}\nConta: {self.numero}')
+
+    def salvar(self) -> dict:
+        """
+        Auxilio para salvar o arquivo
+        """
+        return {'agencia': self.agencia, 'numero': self.numero}
