@@ -15,5 +15,19 @@ class Transacao:
         Exibe no terminal de forma legivel as informações da transação
         """
         print(
-            f'Data: {self.data.isoformat()}, Tipo: {self.tipo}, Valor: {self.valor:.2f}, Destino: {self.destino}'
+            f'Data: {str(self.data)}, Tipo: {self.tipo}, Valor: {self.valor:.2f}, Destino: {self.destino}'
         )
+
+    def salvar(self) -> dict:
+        """
+        Auxilio para salvar o arquivo
+
+        Return:
+            Dicionário da transação
+        """
+        return {
+            'data': str(self.data),
+            'tipo': self.tipo,
+            'valor': self.valor,
+            'destino': self.destino,
+        }
