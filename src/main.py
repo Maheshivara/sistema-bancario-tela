@@ -1,3 +1,4 @@
+import os
 from src.screens.tela_login import logar
 from src.screens.tela_criar_usuario import criar_usuario
 
@@ -10,6 +11,7 @@ if __name__ == '__main__':
         if not opc.isnumeric():
             print('Opção inválida')
             continue
+        os.system('cls' if os.name == 'nt' else 'echo -e \\\\033c')
         opc = int(opc)
         match opc:
             case 1:

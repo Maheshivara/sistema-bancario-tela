@@ -2,6 +2,7 @@ import bcrypt
 import typing
 import re
 import validate_docbr
+import os
 from src.classes.usuario import Usuario
 from src.classes.numero_conta import Numero_conta
 
@@ -49,8 +50,9 @@ def criar_usuario(usuarios: typing.List[Usuario]) -> typing.Union[Usuario, None]
         if telefone.isdecimal() and len(telefone) == 11:
             telefone = int(telefone)
             break
-        print("Numero de celular invalido!")
+        print('Numero de celular invalido!')
 
+    os.system('cls' if os.name == 'nt' else 'echo -e \\\\033c')
     agencia = 123
     # Gerando um número de ao menos 7 digitos
     conta = (10**6) + len(usuarios) + 1
