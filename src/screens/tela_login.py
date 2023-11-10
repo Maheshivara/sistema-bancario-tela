@@ -44,7 +44,7 @@ def mostrar_tela_usuario(usuario: Usuario, usuarios: typing.List[Usuario]):
             case 1:
                 while True:
                     try:
-                        valor = float(input('Quanto você deseja depositar?\n'))
+                        valor = float(input('Quanto você deseja sacar?\n'))
                     except ValueError:
                         print('Erro de digitação, por favor digite novamente')
                     else:
