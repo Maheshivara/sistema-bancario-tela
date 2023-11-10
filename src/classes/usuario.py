@@ -164,3 +164,30 @@ class Usuario:
             Transacao('Transferência Recebida', datetime.datetime.now(), valor, origem)
         )
         return
+
+    def transferir(self, valor: float, destinatario: 'Usuario') -> bool:
+        """
+        Transfere o valor da conta do usuário para a conta do destinatário
+
+        Args:
+            valor (float): Valor a ser transferido
+            destinatario (Usuario): Usuário a receber o valor
+
+        Returns:
+            bool: True caso a transação seja efetuada, False caso não seja efetuada
+        """
+
+        if valor < 0 or valor > self.saldo:
+            return False
+
+        self.saldo -= valor
+        self.extrato.append(
+            Transacao(
+                'Transferência Realizada',
+                datetime.datetime.now(),
+                valor,
+                destinatario.nome,
+            )
+        )
+        destinatario.receber(valor, self.nome)
+        return True
