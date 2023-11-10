@@ -149,3 +149,45 @@ class Usuario:
 
         self.telefone = novo_telefone
         return
+
+    def receber(self, valor: float, origem: str) -> None:
+        """
+        Adiciona o valor ao saldo e registra transação no extrato
+
+        Args:
+            valor (float): Valor a ser adicionado ao saldo
+            origem (str): Nome do usuário que realizou a transferência
+        """
+
+        self.saldo += valor
+        self.extrato.append(
+            Transacao('Transferência Recebida', datetime.datetime.now(), valor, origem)
+        )
+        return
+
+    def transferir(self, valor: float, destinatario: 'Usuario') -> bool:
+        """
+        Transfere o valor da conta do usuário para a conta do destinatário
+
+        Args:
+            valor (float): Valor a ser transferido
+            destinatario (Usuario): Usuário a receber o valor
+
+        Returns:
+            bool: True caso a transação seja efetuada, False caso não seja efetuada
+        """
+
+        if valor < 0 or valor > self.saldo:
+            return False
+
+        self.saldo -= valor
+        self.extrato.append(
+            Transacao(
+                'Transferência Realizada',
+                datetime.datetime.now(),
+                valor,
+                destinatario.nome,
+            )
+        )
+        destinatario.receber(valor, self.nome)
+        return True
