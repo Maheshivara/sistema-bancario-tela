@@ -34,7 +34,7 @@ def mostrar_tela_usuario(usuario: Usuario, usuarios: typing.List[Usuario]):
             'Operações:\n 1- Saque\n 2- Deposito\n 3- Transferência\n 4- Pagamento\n 5- Ver Saldo\n 6- Ver Extrato\n 7- Ver dados\n 8- Sair'
         )
 
-        opc = input('Qual operação voce deseja realizar hoje?\n')
+        opc = input('Qual operação voce deseja realizar agora?\n')
         if not opc.isnumeric():
             print('Opção inválida')
             continue
