@@ -15,7 +15,8 @@ def logar(usuarios: typing.List[Usuario]):
         if usuario.cpf == cpf:
             senha = input('Digite sua senha: ')
             if usuario.login(senha):
-                mostrar_tela_usuario(usuario)
+                mostrar_tela_usuario(usuario, usuarios)
+                break
             else:
                 print('Senha incorreta')
             return
@@ -24,7 +25,7 @@ def logar(usuarios: typing.List[Usuario]):
     return
 
 
-def mostrar_tela_usuario(usuario: Usuario):
+def mostrar_tela_usuario(usuario: Usuario, usuarios: typing.List[Usuario]):
 
     logado = True
     while logado:
@@ -67,7 +68,39 @@ def mostrar_tela_usuario(usuario: Usuario):
                 )
 
             case 3:
-                print('A implementar')
+                while True:
+                    cpf_dest = input('Digite o CPF do destinatário (apenas números):\n')
+                    if (
+                        cpf_dest.isdecimal()
+                        and len(cpf_dest) == 11
+                        and cpf_dest != usuario.cpf
+                    ):
+                        dest = None
+                        for usu in usuarios:
+                            if cpf_dest == usu.cpf:
+                                dest = usu
+                                break
+                        if not dest is None:
+                            break
+                        print('CPF não cadastrado')
+                    else:
+                        print('CPF inválido, tente novamente')
+
+                while True:
+                    try:
+                        valor = float(input('Qual valor para transferir?\n'))
+                    except ValueError:
+                        print('Erro de digitação, por favor digite novamente')
+                    else:
+                        if valor < 0:
+                            print('Valor negativo!')
+                        else:
+                            break
+                resultado = usuario.transferir(valor, dest)
+
+                print('Operação efetuada com sucesso') if resultado else print(
+                    'Não foi possível realizar a transação'
+                )
 
             case 4:
                 while True:
