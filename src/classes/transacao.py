@@ -18,12 +18,12 @@ class Transacao:
             f'Data: {str(self.data)}, Tipo: {self.tipo}, Valor: {self.valor:.2f}, Destino: {self.destino}'
         )
 
-    def salvar(self):
+    def salvar(self) -> dict:
         """
         Auxilio para salvar o arquivo
 
         Return:
-            dict
+            Dicionário da transação
         """
         return {
             'data': str(self.data),
