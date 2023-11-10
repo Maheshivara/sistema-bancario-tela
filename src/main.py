@@ -57,7 +57,7 @@ def carregar_usuarios() -> typing.List[Usuario]:
 
 def salvar_usuarios(usuarios: typing.List[Usuario]) -> None:
     """
-    Salva os dados do usuario em arquivo dados_usuario
+    Salva os dados do usuario em arquivo dados_usuario.json
 
     Args:
         Usuario: O objeto usuário com as informações passadas
@@ -76,7 +76,6 @@ def salvar_usuarios(usuarios: typing.List[Usuario]) -> None:
             }
             for user in usuarios
         ]
-        print(dados)
         json.dump(dados, file)
 
 
