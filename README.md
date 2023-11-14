@@ -28,6 +28,7 @@ Uma interface via linha de comando para um sistema de banco apresentado para a d
     <tr>
       <th style="text-align:center"><a href="https://pypi.org/project/bcrypt/">bcrypt</th>
       <th style="text-align:center"><a href="https://pypi.org/project/validate-docbr/">validate-docbr</th>
+      <th style="text-align:center"><a href="https://pypi.org/project/simplejson/">simplejson</th>
     </tr>
   </table>
 </div>
