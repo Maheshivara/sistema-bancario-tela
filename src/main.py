@@ -76,7 +76,7 @@ def salvar_usuarios(usuarios: typing.List[Usuario]) -> None:
             }
             for user in usuarios
         ]
-        json.dump(dados, file)
+        simplejson.dump(dados, file, sort_keys=True, indent=4 * ' ')
 
 
 if __name__ == '__main__':
