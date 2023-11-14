@@ -1,6 +1,7 @@
 import os
 import typing
 import json
+import simplejson
 from datetime import datetime
 from src.screens.tela_login import logar
 from src.screens.tela_criar_usuario import criar_usuario
@@ -11,12 +12,11 @@ from src.classes.transacao import Transacao
 
 def carregar_usuarios() -> typing.List[Usuario]:
     """
-    Verifica a exitência de dados no arquivo dados_usuario,
+    Verifica a existência de dados no arquivo dados_usuario.json,
     e caso haja irá retornar os dados queridos.
 
     Returns:
-        Usuario: O objeto usuário com as informações passadas
-        Numero_conta(agencia, conta)
+        Lista de objetos usuário com as informações encontradas
     """
 
     def carregar_conta(dicionario: dict):
@@ -57,10 +57,10 @@ def carregar_usuarios() -> typing.List[Usuario]:
 
 def salvar_usuarios(usuarios: typing.List[Usuario]) -> None:
     """
-    Salva os dados do usuario em arquivo dados_usuario.json
+    Salva os dados dos usuarios em arquivo dados_usuario.json
 
     Args:
-        Usuario: O objeto usuário com as informações passadas
+        usuarios: a lista de objeto usuário com as informações passadas
     """
     with open(file='dados_usuario.json', mode='w', encoding='utf8') as file:
         dados = [
