@@ -2,7 +2,7 @@
 
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 
-Uma interface via linha de comando para um sistema de banco apresentado para a disciplina de Linguagens de Programação, apresentado para fins avaliativos na disciplina de Linguagens de Programação no IFAL campus Arapiraca durante o ano de 2023
+Uma interface via linha de comando para um sistema de banco apresentado para a disciplina de Linguagens de Programação, apresentado para fins avaliativos na disciplina de Linguagens de Programação no IFAL campus Arapiraca durante o ano de 2023. O slide utilizado na apresentação pode ser acessado [aqui](https://docs.google.com/presentation/d/1XAX0jqU5dRIXLsISned0GE5wDh9FdQtM6pqYlhUEDXo/edit?usp=sharing).
 
 ## Ferramentas Utilizadas
 
